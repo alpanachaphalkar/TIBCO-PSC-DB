@@ -27,13 +27,26 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
+        - name: git-cloner
+          image: alpine/git
+          args:
+            - clone
+            - --single-branch
+            - --
+            - https://github.com/alpanachaphalkar/TIBCO-PSC-DB.git
+            - /repo
+          volumeMounts:
+            - mountPath: /repo/postgresql/dbscripts
+              name: dbscripts
         - name: volume-mount-hack
           image: busybox:latest
           imagePullPolicy: Never
-          command: [ "sh", "-c", "chmod -R 777 /usr/lib/postgresql/9.6/tablespaces" ]
+          command: [ "sh", "-c", "chmod -R 777 /usr/lib/postgresql/9.6/tablespaces  /dbscripts" ]
           volumeMounts:
             - name: tablespaces
               mountPath: /usr/lib/postgresql/9.6/tablespaces
+            - name: dbscripts
+              mountPath: /dbscripts
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -45,6 +58,9 @@ spec:
               value: "{{ .Values.postgresql.env.POSTGRES_PASSWORD }}"
             - name: POSTGRES_DB
               value: "{{ .Values.postgresql.env.POSTGRES_DB }}"
+          envFrom:
+            - configMapRef:
+                name: psc-db-env-config
           ports:
             - name: http
               containerPort: {{ .Values.postgresql.containerPort }}
@@ -56,52 +72,14 @@ spec:
               mountPath: /usr/lib/postgresql/9.6/tablespaces
             - name: custom-init-scripts
               mountPath: /docker-entrypoint-initdb.d/
-            - name: mdm-db-install-scripts
-              mountPath: /dbscripts/mdm/install
-            - name: mdm-db-configure-scripts
-              mountPath: /dbscripts/mdm/configure
-            - name: mdm-db-install-ddl-scripts
-              mountPath: /dbscripts/mdm/install/ddl
-            - name: mdm-db-install-seed-scripts
-              mountPath: /dbscripts/mdm/install/seed
-            - name: mdm-db-install-triggers-scripts
-              mountPath: /dbscripts/mdm/install/triggers
-            - name: fc-db-install-scripts
-              mountPath: /dbscripts/fc/install
-            - name: fc-db-install-seed-scripts
-              mountPath: /dbscripts/fc/install/seed
+            - name: dbscripts
+              mountPath: /dbscripts
       volumes:
         - name: tablespaces
+          emptyDir: {}
+        - name: dbscripts
           emptyDir: {}
         - name: custom-init-scripts
           configMap:
             name: {{ template "postgresql.initdbScriptsCM" . }}
-            defaultMode: 0777
-        - name: mdm-db-install-scripts
-          configMap:
-            name: mdm-db-install-scripts
-            defaultMode: 0777
-        - name: mdm-db-configure-scripts
-          configMap:
-            name: mdm-db-configure-scripts
-            defaultMode: 0777
-        - name: mdm-db-install-ddl-scripts
-          configMap:
-            name: mdm-db-install-ddl-scripts
-            defaultMode: 0777
-        - name: mdm-db-install-seed-scripts
-          configMap:
-            name: mdm-db-install-seed-scripts
-            defaultMode: 0777
-        - name: mdm-db-install-triggers-scripts
-          configMap:
-            name: mdm-db-install-triggers-scripts
-            defaultMode: 0777
-        - name: fc-db-install-scripts
-          configMap:
-            name: fc-db-install-scripts
-            defaultMode: 0777
-        - name: fc-db-install-seed-scripts
-          configMap:
-            name: fc-db-install-scripts
             defaultMode: 0777

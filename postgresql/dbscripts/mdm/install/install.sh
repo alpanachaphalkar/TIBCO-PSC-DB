@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ $# != 12 ]
 then
@@ -41,135 +41,135 @@ MDMINSTANCEUUID=${14}
 
 # Check if the ENV variable already exits. If it exists, then use it and prompt otherwise.
 # Set the Env variable PGHOME.
-if [ "X${PGHOME}" == "X" ] 
+if [ "${PGHOME}" == "X" ]
 then
     echo "Specify the Postgres Home [/apps/PostgreSQL/9.1] : "
     read PGHOME
 fi
-if [ "X${PGHOME}" == "X" ]
+if [ "${PGHOME}" == "X" ]
 then 
     PGHOME=/apps/PostgreSQL/9.1
 fi
 PGSQL=${PGHOME}/bin/psql
 
 # Set the Env variable PGHOST.
-if [ "X${PGHOST}" == "X" ]
+if [ "${PGHOST}" = "X" ]
 then
     echo "Specify the Postgres Host [localhost] : "
     read PGHOST
 fi
-if [ "X${PGHOST}" == "X" ]
+if [ "${PGHOST}" = "X" ]
 then
     PGHOST=localhost
 fi
 
 # Set the Env variable PGPORT.
-if [ "X${PGPORT}" == "X" ]
+if [ "${PGPORT}" = "X" ]
 then
     echo "Specify the Postgres Port [5432] : "
     read PGPORT
 fi
-if [ "X${PGPORT}" == "X" ]
+if [ "${PGPORT}" = "X" ]
 then
     PGPORT=5432
 fi
 
 # Set the Env variable PGDATABASE.
-if [ "X${PGDATABASE}" == "X" ]
+if [ "${PGDATABASE}" = "X" ]
 then
     echo "Specify the Postgres Initial Database [postgres] : "
     read PGDATABASE
 fi
-if [ "X${PGDATABASE}" == "X" ]
+if [ "${PGDATABASE}" = "X" ]
 then
     PGDATABASE=postgres
 fi
 
 # Set the Env variable PGUSER.
-if [ "X${PGUSER}" == "X" ]
+if [ "${PGUSER}" = "X" ]
 then
     echo "Specify the Postgres admin user [postgres] : "
     read PGUSER
 fi
-if [ "X${PGUSER}" == "X" ]
+if [ "${PGUSER}" = "X" ]
 then
     PGUSER=postgres
 fi
 
 # Set the Env variable PGPASSWORD.
-if [ "X${PGPASSWORD}" == "X" ]
+if [ "${PGPASSWORD}" = "X" ]
 then
     echo "Specify the Postgres admin user password : "
     read PGPASSWORD
 fi
-if [ "X${PGPASSWORD}" == "X" ]
+if [ "${PGPASSWORD}" = "X" ]
 then
     PGPASSWORD=P1password1
 fi
 
 # Set the Env variable MDMDBUSER.
-if [ "X${MDMDBUSER}" == "X" ]
+if [ "${MDMDBUSER}" = "X" ]
 then
     echo "Specify the Postgres mdm user [mdmuser] : "
     read MDMDBUSER
 fi
-if [ "X${MDMDBUSER}" == "X" ]
+if [ "${MDMDBUSER}" = "X" ]
 then
     MDMDBUSER=mdmuser
 fi
 
 # Set the Env variable MDMDBPASSWORD.
-if [ "X${MDMDBPASSWORD}" == "X" ]
+if [ "${MDMDBPASSWORD}" = "X" ]
 then
     echo "Specify the Postgres mdm user password [mdmpassword] : "
     read MDMDBPASSWORD
 fi
-if [ "X${MDMDBPASSWORD}" == "X" ]
+if [ "${MDMDBPASSWORD}" = "X" ]
 then
     MDMDBPASSWORD=mdmpassword
 fi
 
 # Set the Env variable MDMDBSCHEMA
-if [ "X${MDMDBSCHEMA}" == "X" ]
+if [ "${MDMDBSCHEMA}" = "X" ]
 then
     echo "Specify the Postgres mdm user schema [veloschema] : "
     read MDMDBSCHEMA
 fi
-if [ "X${MDMDBSCHEMA}" == "X" ]
+if [ "${MDMDBSCHEMA}" = "X" ]
 then
     MDMDBSCHEMA=veloschema
 fi
 
 # Set the Env variable MDMDBDATATBSSTORAGE.
-if [ "X${MDMDBDATATBSSTORAGE}" == "X" ]
+if [ "${MDMDBDATATBSSTORAGE}" = "X" ]
 then
     echo "Specify the storage for the Data tablespace for MDM database [${PGHOME}/tablespaces/velodbdata] : "
     read MDMDBDATATBSSTORAGE
 fi
-if [ "X${MDMDBDATATBSSTORAGE}" == "X" ]
+if [ "${MDMDBDATATBSSTORAGE}" = "X" ]
 then
     MDMDBDATATBSSTORAGE=${PGHOME}/tablespaces/velodbdata
 fi
 
 # Set the Env variable MDMDBINDEXTBSSTORAGE.
-if [ "X${MDMDBINDEXTBSSTORAGE}" == "X" ]
+if [ "${MDMDBINDEXTBSSTORAGE}" = "X" ]
 then
     echo "Specify the storage for the Index tablespace for MDM database [${PGHOME}/tablespaces/velodbindx] : "
     read MDMDBINDEXTBSSTORAGE
 fi
-if [ "X${MDMDBINDEXTBSSTORAGE}" == "X" ]
+if [ "${MDMDBINDEXTBSSTORAGE}" = "X" ]
 then 
     MDMDBINDEXTBSSTORAGE=${PGHOME}/tablespaces/velodbindx
 fi
 # Set the Env variable PGHOST.
-if [ "X${MDMINSTANCENAME}" == "X" ]
+if [ "${MDMINSTANCENAME}" = "X" ]
 then
     echo "Specify the name for the MDM instance :"
     read MDMINSTANCENAME
 
 fi
 # Set the Env variable PGHOST.
-if [ "X${MDMINSTANCEDESCRIPTION}" == "X" ]
+if [ "${MDMINSTANCEDESCRIPTION}" = "X" ]
 then
     echo "Specify the Description for the MDM instance :"
     read MDMINSTANCEDESCRIPTION

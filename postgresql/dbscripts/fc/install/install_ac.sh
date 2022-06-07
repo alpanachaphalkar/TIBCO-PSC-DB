@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 LOGGER=./logs/DbSetup_Ouputs.log
 
@@ -31,52 +31,52 @@ echo "---------------------------------------------------"
 # Check if the ENV variable already exits. If it exists, then use it and prompt otherwise.
 # Set the Env variable PGHOME.
 
-if [ "X${PGHOME}" == "X" ] 
+if [ "${PGHOME}" = "X" ]
 then
     echo "Specify the Postgres Home [/apps/PostgreSQL/9.1] : "
     read PGHOME
 fi
-if [ "X${PGHOME}" == "X" ] 
+if [ "${PGHOME}" = "X" ]
 then 
     PGHOME=/apps/PostgreSQL/9.1
 fi
 PGSQL=${PGHOME}/bin/psql
 
 # Set the Env variable PGHOST.
-if [ "X${PGHOST}" == "X" ]
+if [ "${PGHOST}" = "X" ]
 then
     echo "Specify the Postgres Host [localhost] : "
     read PGHOST
 fi
-if [ "X${PGHOST}" == "X" ]
+if [ "${PGHOST}" = "X" ]
 then
     PGHOST=localhost
 fi
 
 # Set the Env variable PGPORT.
-if [ "X${PGPORT}" == "X" ]
+if [ "${PGPORT}" = "X" ]
 then
     echo "Specify the Postgres Port [5432] : "
     read PGPORT
 fi
-if [ "X${PGPORT}" == "X" ]
+if [ "${PGPORT}" = "X" ]
 then
     PGPORT=5432
 fi
 
 # Set the Env variable PGDATABASE.
-if [ "X${PGDATABASE}" == "X" ]
+if [ "${PGDATABASE}" = "X" ]
 then
     echo "Specify the Postgres MDM Database [velodb] : "
     read PGDATABASE
 fi
-if [ "X${PGDATABASE}" == "X" ]
+if [ "${PGDATABASE}" = "X" ]
 then
     PGDATABASE=velodb
 fi
 
 # Set the Env variable PGUSER.
-if [ "X${PGUSER}" == "X" ]
+if [ "${PGUSER}" = "X" ]
 then
     echo "Specify the Postgres MDM user : "
     read PGUSER
@@ -84,7 +84,7 @@ fi
 
 
 # Set the Env variable PGPASSWORD.
-if [ "X${PGPASSWORD}" == "X" ]
+if [ "${PGPASSWORD}" = "X" ]
 then
     echo "Specify the Postgres MDM user password : "
     read PGPASSWORD
