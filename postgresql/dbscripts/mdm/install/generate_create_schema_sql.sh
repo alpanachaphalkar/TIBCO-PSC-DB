@@ -10,7 +10,7 @@ echo "--     perpetrator to criminal and civil liability." >> "${SQLFILE}"
 echo "--" >> "${SQLFILE}"
 echo "-- Note   : Please DO NOT edit the script." >> "${SQLFILE}"
 
-if [ "X${MDMDBSCHEMA}" == "X" ]
+if [ "${MDMDBSCHEMA}" = "X" ]
 then
     MDMDBSCHEMA=veloschema
 fi

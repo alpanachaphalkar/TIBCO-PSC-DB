@@ -3,20 +3,19 @@
 LOGGER=./logs/DbSetup_Ouputs.log
 
 # Clear off the previously set variables.
-PGHOME=
-PGHOST=
-PGPORT=
-PGDATABASE=
-PGUSER=
-PGPASSWORD=
-
-PGHOME=$1
-PGHOST=$2
-PGPORT=$3
-PGDATABASE=$4
-PGUSER=$5
-PGPASSWORD=$6
-
+#PGHOME=
+#PGHOST=
+#PGPORT=
+#PGDATABASE=
+#PGUSER=
+#PGPASSWORD=
+#
+#PGHOME=$1
+#PGHOST=$2
+#PGPORT=$3
+#PGDATABASE=$4
+#PGUSER=$5
+#PGPASSWORD=$6
 
 
 echo "---------------------------------------------------"
