@@ -30,7 +30,7 @@ spec:
         - name: volume-mount-hack
           image: busybox:latest
           imagePullPolicy: Never
-          command: [ "sh", "-c", "chmod -R 777 /usr/lib/postgresql/9.6/tablespaces/{velodbdata,velodbindex}" ]
+          command: [ "sh", "-c", "chmod -R 777 /usr/lib/postgresql/9.6/tablespaces" ]
           volumeMounts:
             - name: tablespaces
               mountPath: /usr/lib/postgresql/9.6/tablespaces
