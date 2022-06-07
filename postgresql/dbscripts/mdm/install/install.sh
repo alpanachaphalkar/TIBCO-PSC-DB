@@ -41,12 +41,12 @@ MDMINSTANCEUUID=${14}
 
 # Check if the ENV variable already exits. If it exists, then use it and prompt otherwise.
 # Set the Env variable PGHOME.
-if [ "${PGHOME}" == "X" ]
+if [ "${PGHOME}" = "X" ]
 then
     echo "Specify the Postgres Home [/apps/PostgreSQL/9.1] : "
     read PGHOME
 fi
-if [ "${PGHOME}" == "X" ]
+if [ "${PGHOME}" = "X" ]
 then 
     PGHOME=/apps/PostgreSQL/9.1
 fi
