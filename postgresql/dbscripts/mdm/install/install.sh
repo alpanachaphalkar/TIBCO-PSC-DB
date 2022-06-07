@@ -174,6 +174,20 @@ then
     read MDMINSTANCEDESCRIPTION
 fi
 
+echo "---------------------------------------------------"
+echo "Using PGHOME=${PGHOME}"
+echo "Using PGSQL=${PGSQL}"
+echo "Using PGHOST=${PGHOST}"
+echo "Using PGPORT=${PGPORT}"
+echo "Using PGDATABASE=${PGDATABASE}"
+echo "Using PGUSER=${PGUSER}"
+echo "Using MDMDBUSER=${MDMDBUSER}"
+echo "Using MDMDBSCHEMA=${MDMDBSCHEMA}"
+echo "Using MDMDBDATATBSSTORAGE=${MDMDBDATATBSSTORAGE}"
+echo "Using MDMDBINDEXTBSSTORAGE=${MDMDBINDEXTBSSTORAGE}"
+echo "Using MDMINSTANCENAME=${MDMINSTANCENAME}"
+echo "Using MDMINSTANCEDESCRIPTION=${MDMINSTANCEDESCRIPTION}"
+echo "---------------------------------------------------"
 
 # delete the existing log file.
 rm -f "${LOGGER}*"

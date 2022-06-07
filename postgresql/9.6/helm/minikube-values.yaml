@@ -7,8 +7,9 @@ name: postgresql
 postgresql:
   containerPort: 5432
   env:
-    POSTGRES_PASSWORD: "postgres"
-    POSTGRES_DB: "postgres"
+    POSTGRES_PASSWORD: "velodb"
+    POSTGRES_DB: "mdmuser"
+    POSTGRES_USER: "mdmpassword"
 
 db:
   env:
@@ -17,8 +18,8 @@ db:
     PGHOST: "localhost"
     PGPORT: "5432"
     PGDATABASE: "velodb"
-    PGUSER: "postgres"
-    PGPASSWORD: "postgres"
+    PGUSER: "mdmuser"
+    PGPASSWORD: "mdmpassword"
     MDMDBUSER: "mdmuser"
     MDMDBPASSWORD: "mdmpassword"
     MDMDBSCHEMA: "veloschema"
