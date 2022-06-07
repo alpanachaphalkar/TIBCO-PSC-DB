@@ -7,8 +7,25 @@ name: postgresql
 postgresql:
   containerPort: 5432
   env:
-    POSTGRES_PASSWORD: postgres
-    POSTGRES_DB: superadmindb
+    POSTGRES_PASSWORD: "postgres"
+    POSTGRES_DB: "postgres"
+
+db:
+  env:
+    PGHOME: "/usr/lib/postgresql/9.6"
+    MQ_ON_TROPOS: "true"
+    PGHOST: "localhost"
+    PGPORT: "5432"
+    PGDATABASE: "velodb"
+    PGUSER: "postgres"
+    PGPASSWORD: "postgres"
+    MDMDBUSER: "mdmuser"
+    MDMDBPASSWORD: "mdmpassword"
+    MDMDBSCHEMA: "veloschema"
+    MDMDBDATATBSSTORAGE: "/usr/lib/postgresql/9.6/tablespaces/velodbdata"
+    MDMDBINDEXTBSSTORAGE: "/usr/lib/postgresql/9.6/tablespaces/velodbindex"
+    MDMINSTANCENAME: "velodb"
+    MDMINSTANCEDESCRIPTION: "velodb"
 
 image:
   repository: postgres

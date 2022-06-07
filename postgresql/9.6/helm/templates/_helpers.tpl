@@ -60,3 +60,10 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Get the initialization scripts ConfigMap name.
+*/}}
+{{- define "postgresql.initdbScriptsCM" -}}
+{{- printf "%s-init-scripts" (include "postgres.fullname" .) -}}
+{{- end -}}

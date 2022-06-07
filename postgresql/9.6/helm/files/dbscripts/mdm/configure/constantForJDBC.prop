@@ -1,0 +1,8 @@
+#This file is mapping of constants used in JDBC invocation and names in Scripts.
+#The values specified will be replaced in the sql scripts.
+USERNAME=mdmuser
+PASSWORD=mdmpassword
+TABLESPACELOCATIONvelodbData=C:\Apps\PostgreSQL\9.1\tablespaces\velodbdata
+TABLESPACELOCATIONvelodbindx=C:\Apps\PostgreSQL\9.1\tablespaces\velodbindx
+VELOSCHEMA=veloschema
+DATABASE=velodb
