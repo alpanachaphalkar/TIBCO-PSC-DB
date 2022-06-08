@@ -7,9 +7,9 @@ name: postgresql
 postgresql:
   containerPort: 5432
   env:
-    POSTGRES_PASSWORD: "velodb"
-    POSTGRES_DB: "mdmuser"
-    POSTGRES_USER: "mdmpassword"
+    POSTGRES_DB: "velodb"
+    POSTGRES_PASSWORD: "mdmpassword"
+    POSTGRES_USER: "mdmuser"
 
 db:
   env:
