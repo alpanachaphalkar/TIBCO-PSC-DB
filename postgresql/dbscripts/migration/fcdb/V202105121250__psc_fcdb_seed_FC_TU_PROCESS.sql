@@ -1,0 +1,27 @@
+drop trigger IF EXISTS FC_TU_PROCESS ON PROCESS;
+
+CREATE OR REPLACE FUNCTION updateworkitem()
+  RETURNS trigger AS
+$BODY$DECLARE
+   processId_ PROCESS.ID%TYPE;
+   plCount BIGINT;
+BEGIN 
+   processId_ := OLD.ID;
+
+   SELECT COUNT(*) INTO plCount FROM PROCESSLOG WHERE PROCESSID = processId_ AND LOWER(ACTION) = 'fcextractdatatodelimitedfile';
+   
+   IF plCount > 0 THEN
+   
+       NEW.status := 'WAIT-TASK';
+       
+   END IF;
+
+  RETURN NEW;
+    
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+
+CREATE TRIGGER FC_TU_PROCESS BEFORE UPDATE OF STATUS ON PROCESS 
+FOR EACH ROW WHEN (NEW.STATUS = 'WAIT-WORKITEM') EXECUTE PROCEDURE updateworkitem();
+

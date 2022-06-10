@@ -61,7 +61,8 @@ securityContext: {}
 
 service:
   type: LoadBalancer
-  port: 5432
+  port: 5434
+  targetPort: 5432
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
