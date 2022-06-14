@@ -8,3 +8,14 @@ data:
 {{- with .Files.Glob "files/docker-entrypoint-initdb.d/*.{sh,sql}" }}
 {{ .AsConfig | indent 2 }}
 {{- end }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: psc-data-init-script
+  labels:
+  {{- include "postgres.labels" . | nindent 4 }}
+data:
+{{- with .Files.Glob "files/psc-data-init/*.sh" }}
+{{ .AsConfig | indent 2 }}
+{{- end }}

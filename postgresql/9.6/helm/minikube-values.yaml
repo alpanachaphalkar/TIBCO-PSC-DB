@@ -11,6 +11,9 @@ postgresql:
     POSTGRES_PASSWORD: "postgres"
     POSTGRES_USER: "postgres"
 
+secret:
+  JFROG_BASIC_AUTH_HEADER: "QXV0aG9yaXphdGlvbjogQmFzaWMgWm04dFpuVnNabWxzYkcxbGJuUXRkR1ZoYlRwUFdrTnpiRlpYWWtwVVlWYzFlVEYyVFVOR01BPT0="
+
 db:
   env:
     PGHOME: "/usr/lib/postgresql/9.6"
@@ -27,6 +30,8 @@ db:
     MDMDBINDEXTBSSTORAGE: "/usr/lib/postgresql/9.6/tablespaces/velodbindex"
     MDMINSTANCENAME: "velodb"
     MDMINSTANCEDESCRIPTION: "velodb"
+    MQ_HOME: "/repo/psc-data/psc-mq-home"
+    JAVA_HOME: "/repo/psc-data/psc-java-home"
 
 image:
   repository: postgres

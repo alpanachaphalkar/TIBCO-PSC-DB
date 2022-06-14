@@ -39,15 +39,37 @@ spec:
           volumeMounts:
             - mountPath: /repo
               name: repo
+        - name: curl-unzip-container
+          image: alpine/curl:latest
+          imagePullPolicy: Never
+          envFrom:
+            - secretRef:
+                name: {{ .Release.Name }}-secret
+          env:
+            - name: JFROG_PSC_JAVA_HOME_URL
+              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-java-home.zip"
+            - name: JFROG_PSC_MQ_HOME_URL
+              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-mq-home.zip"
+            - name: MQ_HOME
+              value: "/repo/psc-data/psc-mq-home"
+            - name: JAVA_HOME
+              value: "/repo/psc-data/psc-java-home"
+          volumeMounts:
+            - mountPath: /repo/psc-data
+              name: psc-data
+            - mountPath: /docker-entrypoint-initdb.d/
+              name: psc-data-init-script
         - name: volume-mount-hack
           image: busybox:latest
           imagePullPolicy: Never
-          command: [ "sh", "-c", "chmod -R 777 /usr/lib/postgresql/9.6/tablespaces  /repo" ]
+          command: [ "sh", "-c", "chmod -R 777 /usr/lib/postgresql/9.6/tablespaces  /repo /repo/psc-data" ]
           volumeMounts:
             - name: tablespaces
               mountPath: /usr/lib/postgresql/9.6/tablespaces
             - name: repo
               mountPath: /repo
+            - name: psc-data
+              mountPath: /repo/psc-data
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -80,7 +102,13 @@ spec:
           emptyDir: {}
         - name: repo
           emptyDir: {}
+        - name: psc-data
+          emptyDir: {}
         - name: custom-init-scripts
           configMap:
             name: {{ template "postgresql.initdbScriptsCM" . }}
+            defaultMode: 0777
+        - name: psc-data-init-script
+          configMap:
+            name: psc-data-init-script
             defaultMode: 0777
