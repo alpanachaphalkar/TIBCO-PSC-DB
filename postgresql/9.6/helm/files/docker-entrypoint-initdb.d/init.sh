@@ -5,7 +5,8 @@ echo "DB Initialization Started"
 echo "---------------------------------------------------"
 pg_ctl -o "-c listen_addresses='localhost'" -w restart
 
-mkdir -p "${MDMDBDATATBSSTORAGE}" "${MDMDBINDEXTBSSTORAGE}"
+mkdir -p "${MDMDBDATATBSSTORAGE}" && mkdir -p "${MDMDBINDEXTBSSTORAGE}"
+chown postgres:postgres "${MDMDBDATATBSSTORAGE}" && chown postgres:postgres "${MDMDBINDEXTBSSTORAGE}"
 
 DB_SCRIPTS_PATH="/repo/postgresql/dbscripts"
 echo "---------------------------------------------------"
