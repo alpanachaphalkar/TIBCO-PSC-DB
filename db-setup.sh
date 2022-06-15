@@ -1,4 +1,4 @@
-docker pull alpine/git:latest && docker pull busybox:latest && docker pull postgres:9.6
+docker pull alpine/git:latest && docker pull busybox:latest && docker pull postgres:9.6 && docker pull alpine/curl:latest
 
 kubectl create ns psc-db
 

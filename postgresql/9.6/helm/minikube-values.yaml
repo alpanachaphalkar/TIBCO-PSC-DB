@@ -7,7 +7,7 @@ name: postgresql
 postgresql:
   containerPort: 5432
   env:
-    POSTGRES_DB: "velodb"
+    POSTGRES_DB: "postgres"
     POSTGRES_PASSWORD: "postgres"
     POSTGRES_USER: "postgres"
 
@@ -20,7 +20,7 @@ db:
     MQ_ON_TROPOS: "true"
     PGHOST: "localhost"
     PGPORT: "5432"
-    PGDATABASE: "velodb"
+    PGDATABASE: "postgres"
     PGUSER: "postgres"
     PGPASSWORD: "postgres"
     MDMDBUSER: "mdmuser"
@@ -30,8 +30,8 @@ db:
     MDMDBINDEXTBSSTORAGE: "/usr/lib/postgresql/9.6/tablespaces/velodbindex"
     MDMINSTANCENAME: "velodb"
     MDMINSTANCEDESCRIPTION: "velodb"
-    MQ_HOME: "/repo/psc-data/psc-mq-home"
-    JAVA_HOME: "/repo/psc-data/psc-java-home"
+    MQ_HOME: "/psc-data/psc-mq-home"
+    JAVA_HOME: "/psc-data/psc-java-home"
 
 image:
   repository: postgres

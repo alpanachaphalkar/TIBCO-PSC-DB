@@ -39,9 +39,10 @@ spec:
           volumeMounts:
             - mountPath: /repo
               name: repo
-        - name: curl-unzip-container
-          image: alpine/curl:latest
+        - name: curl-unziper
+          image: alpine/curl
           imagePullPolicy: Never
+          command: [ "sh", "-c", "cd /psc-data-init/ && ./init.sh" ]
           envFrom:
             - secretRef:
                 name: {{ .Release.Name }}-secret
@@ -51,25 +52,25 @@ spec:
             - name: JFROG_PSC_MQ_HOME_URL
               value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-mq-home.zip"
             - name: MQ_HOME
-              value: "/repo/psc-data/psc-mq-home"
+              value: "/psc-data/psc-mq-home"
             - name: JAVA_HOME
-              value: "/repo/psc-data/psc-java-home"
+              value: "/psc-data/psc-java-home"
           volumeMounts:
-            - mountPath: /repo/psc-data
+            - mountPath: /psc-data
               name: psc-data
-            - mountPath: /docker-entrypoint-initdb.d/
+            - mountPath: /psc-data-init/
               name: psc-data-init-script
         - name: volume-mount-hack
           image: busybox:latest
           imagePullPolicy: Never
-          command: [ "sh", "-c", "chmod -R 777 /usr/lib/postgresql/9.6/tablespaces  /repo /repo/psc-data" ]
+          command: [ "sh", "-c", "chmod -R 777 /usr/lib/postgresql/9.6/tablespaces  /repo /psc-data" ]
           volumeMounts:
             - name: tablespaces
               mountPath: /usr/lib/postgresql/9.6/tablespaces
             - name: repo
               mountPath: /repo
             - name: psc-data
-              mountPath: /repo/psc-data
+              mountPath: /psc-data
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -97,6 +98,8 @@ spec:
               mountPath: /docker-entrypoint-initdb.d/
             - name: repo
               mountPath: /repo
+            - name: psc-data
+              mountPath: /psc-data
       volumes:
         - name: tablespaces
           emptyDir: {}
