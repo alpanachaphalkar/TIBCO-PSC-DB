@@ -9,10 +9,7 @@
 --                                                                                 
 -- Note   : Please DO NOT edit the script.                                         
 
-DROP TABLESPACE IF EXISTS velodbdata;                                              
-
-DROP TABLESPACE IF EXISTS velodbindx;                                              
-
-CREATE TABLESPACE velodbdata LOCATION :mdm_data_tbs_storage;
-
-CREATE TABLESPACE velodbindx LOCATION :mdm_data_index_storage;
+DROP TABLESPACE IF EXISTS velodbdata;
+DROP TABLESPACE IF EXISTS velodbindx;
+CREATE TABLESPACE velodbdata LOCATION :'mdm_data_tbs_storage';
+CREATE TABLESPACE velodbindx LOCATION :'mdm_data_index_storage';
