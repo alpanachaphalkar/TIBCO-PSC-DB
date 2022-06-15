@@ -13,6 +13,6 @@ DROP TABLESPACE IF EXISTS velodbdata;
 
 DROP TABLESPACE IF EXISTS velodbindx;                                              
 
-CREATE TABLESPACE velodbdata LOCATION 'C:\Apps\PostgreSQL\9.1\tablespaces\velodbdata';      
+CREATE TABLESPACE velodbdata LOCATION :mdm_data_tbs_storage;
 
-CREATE TABLESPACE velodbindx LOCATION 'C:\Apps\PostgreSQL\9.1\tablespaces\velodbindx';      
+CREATE TABLESPACE velodbindx LOCATION :mdm_data_index_storage;

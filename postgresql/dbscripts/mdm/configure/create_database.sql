@@ -9,6 +9,6 @@
 --                                                                                                       
 -- Note   : Please DO NOT edit the script.                                                               
 
-DROP DATABASE IF EXISTS velodb;                                                                          
+DROP DATABASE IF EXISTS :mdm_db;
 
-CREATE DATABASE velodb WITH ENCODING 'UTF8' TABLESPACE velodbdata CONNECTION LIMIT = -1;  
+CREATE DATABASE :mdm_db WITH ENCODING 'UTF8' TABLESPACE velodbdata CONNECTION LIMIT = -1;

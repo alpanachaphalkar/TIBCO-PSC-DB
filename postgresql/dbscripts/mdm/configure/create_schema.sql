@@ -8,7 +8,7 @@
 --     perpetrator to criminal and civil liability.
 --
 -- Note   : Please DO NOT edit the script.
-CREATE SCHEMA veloschema;
-ALTER SCHEMA veloschema OWNER TO postgres;
-GRANT ALL ON SCHEMA veloschema TO postgres;
-GRANT ALL ON SCHEMA veloschema TO mdmuser;
+CREATE SCHEMA :mdm_db_schema;
+ALTER SCHEMA :mdm_db_schema OWNER TO :pg_super_user;
+GRANT ALL ON SCHEMA :mdm_db_schema TO :pg_super_user;
+GRANT ALL ON SCHEMA :mdm_db_schema TO :mdm_user;

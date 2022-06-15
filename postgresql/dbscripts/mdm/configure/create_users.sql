@@ -8,4 +8,4 @@
 --     perpetrator to criminal and civil liability.
 --
 -- Note - Please DO NOT edit the script.
-CREATE ROLE mdmuser PASSWORD 'mdmpassword' NOSUPERUSER NOCREATEDB CREATEROLE INHERIT LOGIN;
+CREATE ROLE :mdm_user PASSWORD :mdm_password NOSUPERUSER NOCREATEDB CREATEROLE INHERIT LOGIN;

@@ -8,4 +8,4 @@
 --     perpetrator to criminal and civil liability.
 --
 -- Note - Please DO NOT edit the script.
-ALTER USER mdmuser SET search_path to veloschema, public, pg_catalog;
+ALTER USER :mdm_user SET search_path to :mdm_db_schema, public, pg_catalog;

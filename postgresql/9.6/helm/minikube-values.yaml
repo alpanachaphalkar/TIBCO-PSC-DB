@@ -17,6 +17,7 @@ secret:
 db:
   env:
     PGHOME: "/usr/lib/postgresql/9.6"
+    PGSQL: "/usr/lib/postgresql/9.6/bin/psql"
     MQ_ON_TROPOS: "true"
     PGHOST: "localhost"
     PGPORT: "5432"
@@ -30,6 +31,7 @@ db:
     MDMDBINDEXTBSSTORAGE: "/usr/lib/postgresql/9.6/tablespaces/velodbindex"
     MDMINSTANCENAME: "velodb"
     MDMINSTANCEDESCRIPTION: "velodb"
+    LOGGER: "./logs/DbSetup_Outputs.log"
     MQ_HOME: "/psc-data/psc-mq-home"
     JAVA_HOME: "/psc-data/psc-java-home"
 
