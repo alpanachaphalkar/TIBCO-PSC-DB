@@ -32,8 +32,8 @@ db:
     MDMINSTANCENAME: "velodb"
     MDMINSTANCEDESCRIPTION: "velodb"
     LOGGER: "./logs/DbSetup_Outputs.log"
-    MQ_HOME: "/psc-data/psc-mq-home"
-    JAVA_HOME: "/psc-data/psc-java-home"
+    MQ_HOME: "/psc-data/mq-home"
+    JAVA_HOME: "/psc-data/java-home"
 
 image:
   repository: postgres

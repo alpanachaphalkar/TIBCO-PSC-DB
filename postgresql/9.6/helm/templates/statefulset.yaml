@@ -48,9 +48,9 @@ spec:
                 name: {{ .Release.Name }}-secret
           env:
             - name: JFROG_PSC_JAVA_HOME_URL
-              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-java-home.zip"
+              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-data/java-home.zip"
             - name: JFROG_PSC_MQ_HOME_URL
-              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-mq-home.zip"
+              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-data/mq-home.zip"
             - name: MQ_HOME
               value: "/psc-data/psc-mq-home"
             - name: JAVA_HOME
