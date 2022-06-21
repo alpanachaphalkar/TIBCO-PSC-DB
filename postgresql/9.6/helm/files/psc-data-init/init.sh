@@ -11,9 +11,9 @@ curl --location --request GET "${JFROG_PSC_MQ_HOME_URL}" --header "${JFROG_BASIC
 echo "------------------------- Finished Downloading PSC MQ_HOME ZIP -------------------------"
 
 echo "------------------------- Extracting PSC JAVA_HOME ZIP -------------------------"
-unzip "${JAVA_HOME}.zip" -d "/psc-data" && rm "${JAVA_HOME}.zip"
+unzip "${JAVA_HOME}.zip" -d "${JAVA_HOME}" && rm "${JAVA_HOME}.zip"
 echo "------------------------- Finished Extracting PSC JAVA_HOME ZIP -------------------------"
 
 echo "------------------------- Extracting PSC MQ_HOME ZIP -------------------------"
-unzip "${MQ_HOME}.zip" -d "/psc-data" && rm "${MQ_HOME}.zip"
+unzip "${MQ_HOME}.zip" -d "${MQ_HOME}" && rm "${MQ_HOME}.zip"
 echo "------------------------- Finished Extracting PSC MQ_HOME ZIP -------------------------"
