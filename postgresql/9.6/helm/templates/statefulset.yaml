@@ -52,9 +52,9 @@ spec:
             - name: JFROG_PSC_MQ_HOME_URL
               value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-data/mq-home.zip"
             - name: MQ_HOME
-              value: "/psc-data/psc-mq-home"
+              value: {{ .Values.db.env.MQ_HOME }}
             - name: JAVA_HOME
-              value: "/psc-data/psc-java-home"
+              value: {{ .Values.db.env.JAVA_HOME }}
           volumeMounts:
             - mountPath: /psc-data
               name: psc-data
