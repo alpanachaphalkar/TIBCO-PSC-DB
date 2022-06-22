@@ -20,12 +20,12 @@ echo "--------------------------------------------------------------------------
 echo "-------------------------- Launching MDM Scripts ---------------------------"
 "${PGSQL}" -U "${PGUSER}" -d "${PGDATABASE}" -v mdm_data_tbs_storage="${MDMDBDATATBSSTORAGE}" -v mdm_data_index_storage="${MDMDBINDEXTBSSTORAGE}" -f ./mdm/configure/create_tablespaces.sql
 "${PGSQL}" -U "${PGUSER}" -d "${PGDATABASE}" -v mdm_user="${MDMDBUSER}" -v mdm_password="'${MDMDBPASSWORD}'" -f ./mdm/configure/create_users.sql
+"${PGSQL}" -U "${PGUSER}" -d "${PGDATABASE}" -v mdm_db="${MDMINSTANCENAME}" -f ./mdm/configure/create_database.sql
 
 export PGUSER="${MDMDBUSER}"
 export PGPASSWORD="${MDMDBPASSWORD}"
 export PGDATABASE="${MDMINSTANCENAME}"
 
-"${PGSQL}" -U "${PGUSER}" -d "${PGDATABASE}" -v mdm_db="${MDMINSTANCENAME}" -f ./mdm/configure/create_database.sql
 "${PGSQL}" -U "${PGUSER}" -d "${PGDATABASE}" -v mdm_db_schema="${MDMDBSCHEMA}" -v pg_super_user="${PGUSER}" -v mdm_user="${MDMDBUSER}" -f ./mdm/configure/create_schema.sql
 "${PGSQL}" -U "${PGUSER}" -d "${PGDATABASE}" -f ./mdm/configure/create_extentions.sql
 
