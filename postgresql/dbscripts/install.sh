@@ -17,7 +17,7 @@ echo "Using LOGGER=${LOGGER}"
 echo "----------------------------------------------------------------------------"
 
 # Launch the mdm scripts
-echo "-------------------------- Launching MDM Scripts ---------------------------"
+echo "" && echo "-------------------------- Launching MDM Scripts ---------------------------"
 "${PGSQL}" -v mdm_data_tbs_storage="${MDMDBDATATBSSTORAGE}" -v mdm_data_index_storage="${MDMDBINDEXTBSSTORAGE}" -f ./mdm/configure/create_tablespaces.sql
 "${PGSQL}" -v mdm_user="${MDMDBUSER}" -v mdm_password="'${MDMDBPASSWORD}'" -f ./mdm/configure/create_users.sql
 "${PGSQL}" -v mdm_db="${MDMINSTANCENAME}" -f ./mdm/configure/create_database.sql
@@ -70,10 +70,10 @@ export PGDATABASE="${MDMINSTANCENAME}"
 "${PGSQL}" -f ./mdm/install/scripts/ddl/create_functions.sql
 "${PGSQL}" -f ./mdm/install/scripts/triggers/create_triggers.sql
 "${PGSQL}" -v mdm_db_instance_name="${MDMINSTANCENAME}" -v mdm_db_instance_desc="${MDMINSTANCEDESCRIPTION}" -f ./mdm/MDMInstance.sql
-echo "-------------------------- Finished MDM Scripts Execution ---------------------------"
+echo "" && echo "-------------------------- Finished MDM Scripts Execution ---------------------------"
 
 # Launch the fc scripts
-echo "------------------------------ Launching FC Scripts -------------------------------"
+echo "" && echo "------------------------------ Launching FC Scripts -------------------------------"
 "${PGSQL}" -f ./fc/install/scripts/seed/function_ac.sql
 "${PGSQL}" -f ./fc/install/scripts/seed/SCREEN.sql
 "${PGSQL}" -f ./fc/install/scripts/seed/FC_DEL_FROM_DBE_RELATIONSHIP.sql

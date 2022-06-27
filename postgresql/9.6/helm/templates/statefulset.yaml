@@ -39,27 +39,27 @@ spec:
           volumeMounts:
             - mountPath: /repo
               name: repo
-        - name: curl-unziper
-          image: alpine/curl
-          imagePullPolicy: Never
-          command: [ "sh", "-c", "cd /psc-data-init/ && ./init.sh" ]
-          envFrom:
-            - secretRef:
-                name: {{ .Release.Name }}-secret
-          env:
-            - name: JFROG_PSC_JAVA_HOME_URL
-              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-data/java-home.zip"
-            - name: JFROG_PSC_MQ_HOME_URL
-              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-data/mq-home.zip"
-            - name: MQ_HOME
-              value: {{ .Values.db.env.MQ_HOME }}
-            - name: JAVA_HOME
-              value: {{ .Values.db.env.JAVA_HOME }}
-          volumeMounts:
-            - mountPath: /psc-data
-              name: psc-data
-            - mountPath: /psc-data-init/
-              name: psc-data-init-script
+{{/*        - name: curl-unziper*/}}
+{{/*          image: alpine/curl*/}}
+{{/*          imagePullPolicy: Never*/}}
+{{/*          command: [ "sh", "-c", "cd /psc-data-init/ && ./init.sh" ]*/}}
+{{/*          envFrom:*/}}
+{{/*            - secretRef:*/}}
+{{/*                name: {{ .Release.Name }}-secret*/}}
+{{/*          env:*/}}
+{{/*            - name: JFROG_PSC_JAVA_HOME_URL*/}}
+{{/*              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-data/java-home.zip"*/}}
+{{/*            - name: JFROG_PSC_MQ_HOME_URL*/}}
+{{/*              value: "https://skydeportal.jfrog.io/artifactory/fo-fulfillment-generic/Sky%20Deutschland/psc-500-hf2/psc-data/mq-home.zip"*/}}
+{{/*            - name: MQ_HOME*/}}
+{{/*              value: {{ .Values.db.env.MQ_HOME }}*/}}
+{{/*            - name: JAVA_HOME*/}}
+{{/*              value: {{ .Values.db.env.JAVA_HOME }}*/}}
+{{/*          volumeMounts:*/}}
+{{/*            - mountPath: /psc-data*/}}
+{{/*              name: psc-data*/}}
+{{/*            - mountPath: /psc-data-init/*/}}
+{{/*              name: psc-data-init-script*/}}
         - name: volume-mount-hack
           image: busybox:latest
           imagePullPolicy: Never
@@ -111,7 +111,7 @@ spec:
           configMap:
             name: {{ template "postgresql.initdbScriptsCM" . }}
             defaultMode: 0777
-        - name: psc-data-init-script
-          configMap:
-            name: psc-data-init-script
-            defaultMode: 0777
+{{/*        - name: psc-data-init-script*/}}
+{{/*          configMap:*/}}
+{{/*            name: psc-data-init-script*/}}
+{{/*            defaultMode: 0777*/}}
