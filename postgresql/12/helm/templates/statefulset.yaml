@@ -102,7 +102,8 @@ spec:
               mountPath: /psc-data
       volumes:
         - name: tablespaces
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: db-tablespace-pvc
         - name: repo
           emptyDir: {}
         - name: psc-data
