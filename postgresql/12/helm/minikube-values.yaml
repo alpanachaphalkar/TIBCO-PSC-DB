@@ -67,8 +67,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
-  port: 5434
+  type: ClusterIP
+  port: 5432
   targetPort: 5432
 
 resources: {}
