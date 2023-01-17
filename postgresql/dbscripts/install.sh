@@ -81,6 +81,6 @@ echo "" && echo "------------------------------ Launching FC Scripts -----------
 "${PGSQL}" -f ./fc/install/scripts/seed/FC_TU_PROCESS.sql
 "${PGSQL}" -f ./fc/install/scripts/seed/FC_UPDATELIFECYCLESTATUS.sql
 "${PGSQL}" -f ./fc/utility/ClearNamedversionData.sql
-"${PGSQL}" -f ./fc/install/scripts/seed/FC_GET_REL_DEL_MOD_IN_TS.sql
+#"${PGSQL}" -f ./fc/install/scripts/seed/FC_GET_REL_DEL_MOD_IN_TS.sql
 "${PGSQL}" -f ./fc/install/scripts/seed/create_tabs.sql
 echo "-------------------------- Finished FC Scripts Execution ---------------------------"
